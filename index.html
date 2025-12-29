@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayodeji Afolabi - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-color: #ffffff;
+            --bg-light: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-color) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero-content .role {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            color: var(--text-light);
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: var(--bg-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--bg-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: ;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background-color: var(--bg-light);
+            border-radius: 10px;
+        }
+
+        .contact-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            color: #2980b9;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Ayodeji Afolabi</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Ayodeji Afolabi</h1>
+            <p class="role">Computer Science Student and Aspiring Software Developer</p>
+            <a href="#projects" class="cta-button">View My Projects</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                I'm Ayodeji mat BU23CSC1007, a computer science student at Bowen University, Nigeria, focused on building strong foundations in software development.
+            </p>
+            <p>
+                I work with HTML, CSS, and Java, and I understand system analysis and computer architecture concepts. Currently, I'm learning Git and GitHub for version control and deployment.
+            </p>
+            <p>
+                I enjoy working on both academic and personal projects that solve real problems, combining theoretical knowledge with practical application.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Frontend Development</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Responsive Design</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Programming Languages</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Problem Solving</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Tools & Concepts</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>System Analysis</li>
+                    <li>Computer Architecture</li>
+                    <li>Version Control</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">📚</div>
+                <div class="project-content">
+                    <h3>Academic Project</h3>
+                    <p>A comprehensive system analysis project demonstrating understanding of software development lifecycle and system design principles.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">System Analysis</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">💻</div>
+                <div class="project-content">
+                    <h3>Web Development Practice</h3>
+                    <p>Personal projects exploring modern web development techniques, responsive design, and interactive user interfaces.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🔧</div>
+                <div class="project-content">
+                    <h3>Version Control Practice</h3>
+                    <p>Learning and applying Git workflows, branching strategies, and collaborative development practices through hands-on projects.</p>
+                    <div class="project-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-content">
+            <p style="color: var(--text-light); margin-bottom: 2rem;">
+                Feel free to reach out if you'd like to collaborate or have any questions!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email:</strong><br>
+                    <a href="mailto:afolabi.ayodeji@bowen.edu.ng">afolabi.ayodeji@bowen.edu.ng</a>
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub:</strong><br>
+                    <a href="https://github.com/D3J11" target="_blank" rel="noopener noreferrer">github.com/D3J11</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Location:</strong><br>
+                    Nigeria
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
